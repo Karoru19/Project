@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1244</width>
+    <height>628</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QToolButton" name="ButtonAll">
+        <property name="minimumSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>64</width>
+          <height>64</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>All</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/Icons/Custom-Icon-Design-Flatastic-9-Yin-Yang-True-false.ico</normaloff>:/Icons/Custom-Icon-Design-Flatastic-9-Yin-Yang-True-false.ico</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+        <property name="autoExclusive">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="ButtonVolleyball">
+        <property name="text">
+         <string>Volleyball</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/Icons/volleyball.png</normaloff>:/Icons/volleyball.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="autoExclusive">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="ButtonTugOfWar">
+        <property name="text">
+         <string>Line</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/Icons/8ace76d9-a3f6-4a5a-8883-cdbd4852f9aa.png</normaloff>:/Icons/8ace76d9-a3f6-4a5a-8883-cdbd4852f9aa.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="autoExclusive">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="ButtonDodgeball">
+        <property name="text">
+         <string>Dodgeball</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/Icons/11764560,width=280,height=280.png</normaloff>:/Icons/11764560,width=280,height=280.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="autoExclusive">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QTabWidget" name="Tablica">
+      <property name="currentIndex">
+       <number>5</number>
+      </property>
+      <widget class="QWidget" name="TabTeam">
+       <attribute name="title">
+        <string>Drużyny</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QTableWidget" name="TableTeam"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="TabRefree">
+       <attribute name="title">
+        <string>Sędziowie</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QTableWidget" name="TableRefree"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="TabMatch">
+       <attribute name="title">
+        <string>Mecze Eliminacyjne</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QTableWidget" name="TableMatch">
+          <row>
+           <property name="text">
+            <string>1</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>2</string>
+           </property>
+          </row>
+          <column>
+           <property name="text">
+            <string>Drużyna 1</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Drużyna 2</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Wynik</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Konkurencja</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Sędzia</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Sędzia Pomocniczy 1</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Sędzia Pomocniczy 2</string>
+           </property>
+          </column>
+          <item row="0" column="0">
+           <property name="text">
+            <string>Zdzichu</string>
+           </property>
+          </item>
+          <item row="0" column="1">
+           <property name="text">
+            <string>Dominig</string>
+           </property>
+          </item>
+          <item row="0" column="2">
+           <property name="text">
+            <string>27-25</string>
+           </property>
+          </item>
+          <item row="0" column="3">
+           <property name="text">
+            <string>siatkówka plażowa</string>
+           </property>
+          </item>
+          <item row="0" column="4">
+           <property name="text">
+            <string>Stasio</string>
+           </property>
+          </item>
+          <item row="0" column="5">
+           <property name="text">
+            <string>Franek</string>
+           </property>
+          </item>
+          <item row="0" column="6">
+           <property name="text">
+            <string>JKm</string>
+           </property>
+          </item>
+          <item row="1" column="0">
+           <property name="text">
+            <string>HAlKi</string>
+           </property>
+          </item>
+          <item row="1" column="1">
+           <property name="text">
+            <string>Ionmeny</string>
+           </property>
+          </item>
+          <item row="1" column="2">
+           <property name="text">
+            <string>1-0</string>
+           </property>
+          </item>
+          <item row="1" column="3">
+           <property name="text">
+            <string>Przeciąganie Liny</string>
+           </property>
+          </item>
+          <item row="1" column="4">
+           <property name="text">
+            <string>pawlacz</string>
+           </property>
+          </item>
+          <item row="1" column="5">
+           <property name="text">
+            <string>Lewy</string>
+           </property>
+          </item>
+          <item row="1" column="6">
+           <property name="text">
+            <string>Jarosław</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="TabSemiFinal">
+       <attribute name="title">
+        <string>Półfinały</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <item>
+         <widget class="QTableWidget" name="TableSemiFinal">
+          <row>
+           <property name="text">
+            <string>1</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>2</string>
+           </property>
+          </row>
+          <column>
+           <property name="text">
+            <string>Drużyna 1</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Drużyna 2</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Wynik</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Konkurencja</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Sędzia</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Sędzia Pomocniczy 1</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Sędzia Pomocniczy 2</string>
+           </property>
+          </column>
+          <item row="0" column="0">
+           <property name="text">
+            <string>Zdzichu</string>
+           </property>
+          </item>
+          <item row="0" column="1">
+           <property name="text">
+            <string>Dominig</string>
+           </property>
+          </item>
+          <item row="0" column="2">
+           <property name="text">
+            <string>27-25</string>
+           </property>
+          </item>
+          <item row="0" column="3">
+           <property name="text">
+            <string>siatkówka plażowa</string>
+           </property>
+          </item>
+          <item row="0" column="4">
+           <property name="text">
+            <string>Stasio</string>
+           </property>
+          </item>
+          <item row="0" column="5">
+           <property name="text">
+            <string>Franek</string>
+           </property>
+          </item>
+          <item row="0" column="6">
+           <property name="text">
+            <string>JKm</string>
+           </property>
+          </item>
+          <item row="1" column="0">
+           <property name="text">
+            <string>HAlKi</string>
+           </property>
+          </item>
+          <item row="1" column="1">
+           <property name="text">
+            <string>Ionmeny</string>
+           </property>
+          </item>
+          <item row="1" column="2">
+           <property name="text">
+            <string>1-0</string>
+           </property>
+          </item>
+          <item row="1" column="3">
+           <property name="text">
+            <string>Przeciąganie Liny</string>
+           </property>
+          </item>
+          <item row="1" column="4">
+           <property name="text">
+            <string>pawlacz</string>
+           </property>
+          </item>
+          <item row="1" column="5">
+           <property name="text">
+            <string>Lewy</string>
+           </property>
+          </item>
+          <item row="1" column="6">
+           <property name="text">
+            <string>Jarosław</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="TabFinal">
+       <attribute name="title">
+        <string>Fianły</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_7">
+        <item>
+         <widget class="QTableWidget" name="TableFinal">
+          <row>
+           <property name="text">
+            <string>1</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>2</string>
+           </property>
+          </row>
+          <column>
+           <property name="text">
+            <string>Drużyna 1</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Drużyna 2</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Wynik</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Konkurencja</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Sędzia</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Sędzia Pomocniczy 1</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Sędzia Pomocniczy 2</string>
+           </property>
+          </column>
+          <item row="0" column="0">
+           <property name="text">
+            <string>Zdzichu</string>
+           </property>
+          </item>
+          <item row="0" column="1">
+           <property name="text">
+            <string>Dominig</string>
+           </property>
+          </item>
+          <item row="0" column="2">
+           <property name="text">
+            <string>27-25</string>
+           </property>
+          </item>
+          <item row="0" column="3">
+           <property name="text">
+            <string>siatkówka plażowa</string>
+           </property>
+          </item>
+          <item row="0" column="4">
+           <property name="text">
+            <string>Stasio</string>
+           </property>
+          </item>
+          <item row="0" column="5">
+           <property name="text">
+            <string>Franek</string>
+           </property>
+          </item>
+          <item row="0" column="6">
+           <property name="text">
+            <string>JKm</string>
+           </property>
+          </item>
+          <item row="1" column="0">
+           <property name="text">
+            <string>HAlKi</string>
+           </property>
+          </item>
+          <item row="1" column="1">
+           <property name="text">
+            <string>Ionmeny</string>
+           </property>
+          </item>
+          <item row="1" column="2">
+           <property name="text">
+            <string>1-0</string>
+           </property>
+          </item>
+          <item row="1" column="3">
+           <property name="text">
+            <string>Przeciąganie Liny</string>
+           </property>
+          </item>
+          <item row="1" column="4">
+           <property name="text">
+            <string>pawlacz</string>
+           </property>
+          </item>
+          <item row="1" column="5">
+           <property name="text">
+            <string>Lewy</string>
+           </property>
+          </item>
+          <item row="1" column="6">
+           <property name="text">
+            <string>Jarosław</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="TabRank">
+       <attribute name="title">
+        <string>Ranking</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_8">
+        <item>
+         <widget class="QTableWidget" name="TableRank"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1244</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuXD">
+    <property name="title">
+     <string>Plik</string>
+    </property>
+    <addaction name="actionZapisz"/>
+    <addaction name="actionWczytaj"/>
+   </widget>
+   <widget class="QMenu" name="menuEdycja">
+    <property name="title">
+     <string>Edycja</string>
+    </property>
+    <addaction name="actionDru_yny"/>
+    <addaction name="actionS_dziowie"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Pomoc</string>
+    </property>
+   </widget>
+   <addaction name="menuXD"/>
+   <addaction name="menuEdycja"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionZapisz">
+   <property name="text">
+    <string>Zapisz</string>
+   </property>
+  </action>
+  <action name="actionWczytaj">
+   <property name="text">
+    <string>Wczytaj</string>
+   </property>
+  </action>
+  <action name="actionDru_yny">
+   <property name="text">
+    <string>Drużyny</string>
+   </property>
+  </action>
+  <action name="actionS_dziowie">
+   <property name="text">
+    <string>Sędziowie</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
