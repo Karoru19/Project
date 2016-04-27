@@ -142,17 +142,13 @@
     <item>
      <widget class="QTabWidget" name="Tablica">
       <property name="currentIndex">
-       <number>5</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="TabTeam">
        <attribute name="title">
         <string>Drużyny</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <item>
-         <widget class="QTableWidget" name="TableTeam"/>
-        </item>
-       </layout>
+       <layout class="QVBoxLayout" name="verticalLayout_3"/>
       </widget>
       <widget class="QWidget" name="TabRefree">
        <attribute name="title">

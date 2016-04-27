@@ -17,13 +17,17 @@ SOURCES += main.cpp\
     osoba.cpp \
     sedzia.cpp \
     zawodnik.cpp \
-    druzyna.cpp
+    druzyna.cpp \
+    mecz.cpp \
+    sedziaglowny.cpp
 
 HEADERS  += mainwindow.h \
     osoba.h \
     sedzia.h \
     zawodnik.h \
-    druzyna.h
+    druzyna.h \
+    mecz.h \
+    sedziaglowny.h
 
 FORMS    += mainwindow.ui
 
