@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     qsrand(QTime::currentTime().msecsSinceStartOfDay());
     ui->setupUi(this);
     gen = Generator();
+    connect(ui->TableRank->horizontalHeader(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), ui->TableRank, SLOT(sortByColumn(int)));
 }
 
 MainWindow::~MainWindow() {

@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>241</height>
+    <height>300</height>
    </rect>
   </property>
   <property name="maximumSize">
    <size>
     <width>400</width>
-    <height>241</height>
+    <height>300</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -23,12 +23,22 @@
    <item>
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>Wpisz Imie i Nazwisko Sedziego</string>
+      <string>Wpisz Imie Sedziego</string>
      </property>
     </widget>
    </item>
    <item>
     <widget class="QLineEdit" name="lineEdit_2"/>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Wpisz Nazwisko Sedziego</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="lineEdit_3"/>
    </item>
    <item>
     <widget class="QLabel" name="label">
