@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1244</width>
+    <height>628</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>SVG</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/Icons/Resources/ThumbnailAction.png</normaloff>:/Icons/Resources/ThumbnailAction.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">Background-color: #013220</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QToolButton" name="ButtonAll">
+        <property name="minimumSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>64</width>
+          <height>64</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QToolButton{
+	background-color: #AAffAf;
+	border: none;
+}
+QToolButton:checked{
+	background-color: #77cc7c;
+}</string>
+        </property>
+        <property name="text">
+         <string>All</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/Icons/Resources/Custom-Icon-Design-Flatastic-9-Yin-Yang-True-false.ico</normaloff>:/Icons/Resources/Custom-Icon-Design-Flatastic-9-Yin-Yang-True-false.ico</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+        <property name="autoExclusive">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="ButtonVolleyball">
+        <property name="styleSheet">
+         <string notr="true">QToolButton{
+	background-color: #defcab;
+	border: none;
+}
+QToolButton:checked{
+	background-color: #abc978;
+}</string>
+        </property>
+        <property name="text">
+         <string>Volleyball</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/Icons/Resources/volleyball.png</normaloff>:/Icons/Resources/volleyball.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="autoExclusive">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="ButtonTugOfWar">
+        <property name="styleSheet">
+         <string notr="true">QToolButton{
+	background-color: #adaced;
+	border: none;
+}
+QToolButton:checked{
+	background-color: #7a79ba;
+}</string>
+        </property>
+        <property name="text">
+         <string>Line</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/Icons/Resources/8ace76d9-a3f6-4a5a-8883-cdbd4852f9aa.png</normaloff>:/Icons/Resources/8ace76d9-a3f6-4a5a-8883-cdbd4852f9aa.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="autoExclusive">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="ButtonDodgeball">
+        <property name="styleSheet">
+         <string notr="true">QToolButton{
+	background-color: #adeced;
+	border: none;
+}
+QToolButton:checked{
+	background-color: #7ab9ba;
+}</string>
+        </property>
+        <property name="text">
+         <string>Dodgeball</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/Icons/Resources/11764560,width=280,height=280.png</normaloff>:/Icons/Resources/11764560,width=280,height=280.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="autoExclusive">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QTabWidget" name="Tablica">
+      <property name="styleSheet">
+       <string notr="true">background-color: #FFFFFF</string>
+      </property>
+      <property name="currentIndex">
+       <number>3</number>
+      </property>
+      <widget class="QWidget" name="TabTeam">
+       <attribute name="title">
+        <string>Drużyny</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QTableWidget" name="TableTeam">
+          <property name="styleSheet">
+           <string notr="true">background-color: #FFFFFF</string>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="verticalScrollMode">
+           <enum>QAbstractItemView::ScrollPerPixel</enum>
+          </property>
+          <property name="horizontalScrollMode">
+           <enum>QAbstractItemView::ScrollPerPixel</enum>
+          </property>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>Nazwa Drużyny</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Rodzaj</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Zawodnik 1</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Zawodnik 2</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Zawodnik 3</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Zawodnik 4</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Zawodnik 5</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="TabRefree">
+       <attribute name="title">
+        <string>Sędziowie</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QTableWidget" name="TableRefree">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>Imie</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Nazwisko</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Rola</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Dyscyplina</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="TabMatch">
+       <attribute name="title">
+        <string>Mecze Eliminacyjne</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QTableWidget" name="TableMatch">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="gridStyle">
+           <enum>Qt::SolidLine</enum>
+          </property>
+          <attribute name="horizontalHeaderCascadingSectionResizes">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>100</number>
+          </attribute>
+          <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderCascadingSectionResizes">
+           <bool>false</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>Drużyna 1</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Drużyna 2</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Wynik</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Konkurencja</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Sędzia</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Sędzia Pomocniczy 1</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Sędzia Pomocniczy 2</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="TabRank">
+       <attribute name="title">
+        <string>Ranking</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_8">
+        <item>
+         <widget class="QTableWidget" name="TableRank">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <attribute name="horizontalHeaderCascadingSectionResizes">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>Nazwa Drużyny</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Konkurencja</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Wynik</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Liczba Punktów</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1244</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuXD">
+    <property name="title">
+     <string>Plik</string>
+    </property>
+    <addaction name="actionZapisz"/>
+    <addaction name="actionWczytaj"/>
+   </widget>
+   <widget class="QMenu" name="menuEdycja">
+    <property name="title">
+     <string>Edycja</string>
+    </property>
+    <widget class="QMenu" name="menuDruzyny">
+     <property name="title">
+      <string>Drużyny</string>
+     </property>
+     <addaction name="actionDodaj"/>
+     <addaction name="actionUsun"/>
+     <addaction name="actionEdytuj"/>
+    </widget>
+    <widget class="QMenu" name="menuSedziowie">
+     <property name="title">
+      <string>Sędziowie</string>
+     </property>
+     <addaction name="actionDodaj_2"/>
+     <addaction name="actionUsun_2"/>
+     <addaction name="actionEdytuj_2"/>
+    </widget>
+    <addaction name="menuDruzyny"/>
+    <addaction name="menuSedziowie"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Pomoc</string>
+    </property>
+    <addaction name="actionO_nas"/>
+   </widget>
+   <widget class="QMenu" name="menuGenerator">
+    <property name="title">
+     <string>Generator</string>
+    </property>
+    <addaction name="actionGeneruj_Druzyny"/>
+    <addaction name="actionGeneruj_Sedziego"/>
+   </widget>
+   <addaction name="menuXD"/>
+   <addaction name="menuEdycja"/>
+   <addaction name="menuGenerator"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionZapisz">
+   <property name="text">
+    <string>Zapisz</string>
+   </property>
+  </action>
+  <action name="actionWczytaj">
+   <property name="text">
+    <string>Wczytaj</string>
+   </property>
+  </action>
+  <action name="actionDodaj">
+   <property name="text">
+    <string>Dodaj</string>
+   </property>
+  </action>
+  <action name="actionUsun">
+   <property name="text">
+    <string>Usun</string>
+   </property>
+  </action>
+  <action name="actionEdytuj">
+   <property name="text">
+    <string>Edytuj</string>
+   </property>
+  </action>
+  <action name="actionDodaj_2">
+   <property name="text">
+    <string>Dodaj</string>
+   </property>
+  </action>
+  <action name="actionUsun_2">
+   <property name="text">
+    <string>Usun</string>
+   </property>
+  </action>
+  <action name="actionEdytuj_2">
+   <property name="text">
+    <string>Edytuj</string>
+   </property>
+  </action>
+  <action name="actionO_nas">
+   <property name="text">
+    <string>O nas</string>
+   </property>
+  </action>
+  <action name="actionGeneruj_Druzyny">
+   <property name="text">
+    <string>Generuj Druzyny</string>
+   </property>
+  </action>
+  <action name="actionGeneruj_Sedziego">
+   <property name="text">
+    <string>Generuj Sedziego</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
