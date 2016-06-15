@@ -14,6 +14,11 @@ class GeneratorDruzynyDialog : public QDialog
 public:
     explicit GeneratorDruzynyDialog(QWidget *parent = 0);
     ~GeneratorDruzynyDialog();
+    int m_Liczba;
+
+public slots:
+    int WczytajLiczbe();
+    int ObliczLiczbe();
 
 private slots:
     void on_pushButton_2_clicked();

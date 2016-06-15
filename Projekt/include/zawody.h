@@ -5,6 +5,7 @@
 #include "listadruzyn.h"
 #include "listasedziow.h"
 #include "listaspotkan.h"
+#include <QDebug>
 
 class Zawody
 {

@@ -21,6 +21,9 @@
    <string notr="true">QMainWindow{
 Background-color: #013220;
 }
+QMenuBar::item:selected{
+background-color: #f97c6a;
+}
 QMenuBar {
 background-color: #FFFFFF;
 }</string>

@@ -136,13 +136,17 @@ void Zawody::RozegrajMecze()
     QString Gosp;
     QString Gosc;
 
-    int Pkt;
+    int Pkt = 0;
 
     for (int i = 0; i < MSP.size(); i++){
         Spotkania.MeczeSiatkowekPlazowych[MSP.at(i)].Rozegraj();
         Gosp = Spotkania.MeczeSiatkowekPlazowych.value(MSP.at(i)).m_Gospodarz.Nazwa();
         Gosc = Spotkania.MeczeSiatkowekPlazowych.value(MSP.at(i)).m_Gosc.Nazwa();
         Pkt = Spotkania.MeczeSiatkowekPlazowych.value(MSP.at(i)).m_PunktyGospodarza;
+        Druzyny.DruzynySiatkowkaPlazowa[(Gosp)].m_PunktyZdobyte += Pkt;
+        Druzyny.DruzynySiatkowkaPlazowa[(Gosp)].m_PunktyStracone += Spotkania.MeczeSiatkowekPlazowych.value(MSP.at(i)).m_PunktyGoscia;
+        Druzyny.DruzynySiatkowkaPlazowa[(Gosc)].m_PunktyZdobyte += Spotkania.MeczeSiatkowekPlazowych.value(MSP.at(i)).m_PunktyGoscia;
+        Druzyny.DruzynySiatkowkaPlazowa[(Gosc)].m_PunktyStracone += Pkt;
         if (Pkt != 3){
             Druzyny.DruzynySiatkowkaPlazowa[(Gosc)].Wygrana();
         }
@@ -155,6 +159,10 @@ void Zawody::RozegrajMecze()
         Gosp = Spotkania.MeczeDwochOgni.value(MDO.at(i)).m_Gospodarz.Nazwa();
         Gosc = Spotkania.MeczeDwochOgni.value(MDO.at(i)).m_Gosc.Nazwa();
         Pkt = Spotkania.MeczeDwochOgni.value(MDO.at(i)).m_PunktyGospodarza;
+        Druzyny.DruzynyDwaOgnie[(Gosp)].m_PunktyZdobyte += Pkt;
+        Druzyny.DruzynyDwaOgnie[(Gosp)].m_PunktyStracone += Spotkania.MeczeDwochOgni.value(MDO.at(i)).m_PunktyGoscia;
+        Druzyny.DruzynyDwaOgnie[(Gosc)].m_PunktyZdobyte += Spotkania.MeczeDwochOgni.value(MDO.at(i)).m_PunktyGoscia;
+        Druzyny.DruzynyDwaOgnie[(Gosc)].m_PunktyStracone += Pkt;
         if (Pkt != 3){
             Druzyny.DruzynyDwaOgnie[(Gosc)].Wygrana();
         }
@@ -167,6 +175,10 @@ void Zawody::RozegrajMecze()
         Gosp = Spotkania.MeczePrzeciaganieLiny.value(MPL.at(i)).m_Gospodarz.Nazwa();
         Gosc = Spotkania.MeczePrzeciaganieLiny.value(MPL.at(i)).m_Gosc.Nazwa();
         Pkt = Spotkania.MeczePrzeciaganieLiny.value(MPL.at(i)).m_PunktyGospodarza;
+        Druzyny.DruzynyPrzeciaganieLiny[(Gosp)].m_PunktyZdobyte += Pkt;
+        Druzyny.DruzynyPrzeciaganieLiny[(Gosp)].m_PunktyStracone += Spotkania.MeczePrzeciaganieLiny.value(MPL.at(i)).m_PunktyGoscia;
+        Druzyny.DruzynyPrzeciaganieLiny[(Gosc)].m_PunktyZdobyte += Spotkania.MeczePrzeciaganieLiny.value(MPL.at(i)).m_PunktyGoscia;
+        Druzyny.DruzynyPrzeciaganieLiny[(Gosc)].m_PunktyStracone += Pkt;
         if (Pkt != 3){
             Druzyny.DruzynyPrzeciaganieLiny[(Gosc)].Wygrana();
         }

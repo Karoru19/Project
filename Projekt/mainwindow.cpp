@@ -236,62 +236,32 @@ void MainWindow::UpdateRank()
 
     for (int i = 0; i < ui->TableRank->rowCount(); i++){
         if (i < A){
-            pktza = 0;
-            pktprzeciw = 0;
+            pktza = NoweZawody.Druzyny.DruzynySiatkowkaPlazowa.value(DSP.at(i)).m_PunktyZdobyte;
+            pktprzeciw = NoweZawody.Druzyny.DruzynySiatkowkaPlazowa.value(DSP.at(i)).m_PunktyStracone;
             Nazwa = NoweZawody.Druzyny.DruzynySiatkowkaPlazowa.value(DSP.at(i)).Nazwa();
             ui->TableRank->setItem(i,0,new QTableWidgetItem(Nazwa));
             ui->TableRank->setItem(i, 1,new QTableWidgetItem("Siatkowka Plazowa"));
-            for (int j = 0; j < MSP.size(); j++){
-                if (NoweZawody.Spotkania.MeczeSiatkowekPlazowych.value(MSP.at(j)).m_Gospodarz.m_Nazwa == Nazwa) {
-                    pktza += NoweZawody.Spotkania.MeczeSiatkowekPlazowych.value(MSP.at(j)).m_PunktyGospodarza;
-                    pktprzeciw += NoweZawody.Spotkania.MeczeSiatkowekPlazowych.value(MSP.at(j)).m_PunktyGoscia;
-                }
-                else if (NoweZawody.Spotkania.MeczeSiatkowekPlazowych.value(MSP.at(j)).m_Gosc.m_Nazwa == Nazwa) {
-                    pktza += NoweZawody.Spotkania.MeczeSiatkowekPlazowych.value(MSP.at(j)).m_PunktyGoscia;
-                    pktprzeciw += NoweZawody.Spotkania.MeczeSiatkowekPlazowych.value(MSP.at(j)).m_PunktyGospodarza;
-                }
-            }
-            Wynik = QString::number(pktza) + " - " + QString::number(pktprzeciw);
+            Wynik = QString::number(pktza) + " : " + QString::number(pktprzeciw);
             ui->TableRank->setItem(i,2,new QTableWidgetItem(Wynik));
             ui->TableRank->setItem(i,3,new QTableWidgetItem(QString::number(NoweZawody.Druzyny.DruzynySiatkowkaPlazowa.value(DSP.at(i)).m_Punkty)));
         }
         else if (i >=A && i < B){
-            pktza = 0;
-            pktprzeciw = 0;
+            pktza = NoweZawody.Druzyny.DruzynyDwaOgnie.value(DDO.at(i - A)).m_PunktyZdobyte;
+            pktprzeciw = NoweZawody.Druzyny.DruzynyDwaOgnie.value(DDO.at(i - A)).m_PunktyStracone;
             Nazwa = NoweZawody.Druzyny.DruzynyDwaOgnie.value(DDO.at(i - A)).Nazwa();
             ui->TableRank->setItem(i,0,new QTableWidgetItem(Nazwa));
             ui->TableRank->setItem(i, 1,new QTableWidgetItem("Dwa Ognie"));
-            for (int j = 0; j < MDO.size(); j++){
-                if (NoweZawody.Spotkania.MeczeDwochOgni.value(MDO.at(j)).m_Gospodarz.m_Nazwa == Nazwa) {
-                    pktza += NoweZawody.Spotkania.MeczeDwochOgni.value(MDO.at(j)).m_PunktyGospodarza;
-                    pktprzeciw += NoweZawody.Spotkania.MeczeDwochOgni.value(MDO.at(j)).m_PunktyGoscia;
-                }
-                else if (NoweZawody.Spotkania.MeczeDwochOgni.value(MDO.at(j)).m_Gosc.m_Nazwa == Nazwa) {
-                    pktza += NoweZawody.Spotkania.MeczeDwochOgni.value(MDO.at(j)).m_PunktyGoscia;
-                    pktprzeciw += NoweZawody.Spotkania.MeczeDwochOgni.value(MDO.at(j)).m_PunktyGospodarza;
-                }
-            }
-            Wynik = QString::number(pktza) + " - " + QString::number(pktprzeciw);
+            Wynik = QString::number(pktza) + " : " + QString::number(pktprzeciw);
             ui->TableRank->setItem(i,2,new QTableWidgetItem(Wynik));
             ui->TableRank->setItem(i,3,new QTableWidgetItem(QString::number(NoweZawody.Druzyny.DruzynyDwaOgnie.value(DDO.at(i - A)).m_Punkty)));
         }
         else {
-            pktza = 0;
-            pktprzeciw = 0;
+            pktza = NoweZawody.Druzyny.DruzynyPrzeciaganieLiny.value(DPL.at(i - B)).m_PunktyZdobyte;
+            pktprzeciw = NoweZawody.Druzyny.DruzynyPrzeciaganieLiny.value(DPL.at(i - B)).m_PunktyStracone;
             Nazwa = NoweZawody.Druzyny.DruzynyPrzeciaganieLiny.value(DPL.at(i - B)).Nazwa();
             ui->TableRank->setItem(i,0,new QTableWidgetItem(Nazwa));
             ui->TableRank->setItem(i, 1,new QTableWidgetItem("Przeciaganie Liny"));
-            for (int j = 0; j < MPL.size(); j++){
-                if (NoweZawody.Spotkania.MeczePrzeciaganieLiny.value(MPL.at(j)).m_Gospodarz.m_Nazwa == Nazwa) {
-                    pktza += NoweZawody.Spotkania.MeczePrzeciaganieLiny.value(MPL.at(j)).m_PunktyGospodarza;
-                    pktprzeciw += NoweZawody.Spotkania.MeczePrzeciaganieLiny.value(MPL.at(j)).m_PunktyGoscia;
-                }
-                else if (NoweZawody.Spotkania.MeczePrzeciaganieLiny.value(MPL.at(j)).m_Gosc.m_Nazwa == Nazwa) {
-                    pktza += NoweZawody.Spotkania.MeczePrzeciaganieLiny.value(MPL.at(j)).m_PunktyGoscia;
-                    pktprzeciw += NoweZawody.Spotkania.MeczePrzeciaganieLiny.value(MPL.at(j)).m_PunktyGospodarza;
-                }
-            }
-            Wynik = QString::number(pktza) + " - " + QString::number(pktprzeciw);
+            Wynik = QString::number(pktza) + " : " + QString::number(pktprzeciw);
             ui->TableRank->setItem(i,2,new QTableWidgetItem(Wynik));
             ui->TableRank->setItem(i,3,new QTableWidgetItem(QString::number(NoweZawody.Druzyny.DruzynyPrzeciaganieLiny.value(DPL.at(i - B)).m_Punkty)));
         }
@@ -328,11 +298,6 @@ void MainWindow::AddMatch()
 {
     ui->TableMatch->insertRow(0);
     NoweZawody.UstawSpotkania();
-}
-
-void MainWindow::AddRank()
-{
-
 }
 
 void MainWindow::AddScore()

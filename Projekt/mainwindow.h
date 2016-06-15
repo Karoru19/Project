@@ -38,7 +38,6 @@ public:
     void AddTeam();
     void AddRefree();
     void AddMatch();
-    void AddRank();
 
     void AddScore();
 
