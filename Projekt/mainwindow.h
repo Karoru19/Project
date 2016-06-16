@@ -41,6 +41,11 @@ public:
 
     void AddScore();
 
+signals:
+    void DruzynaDodana(bool);
+
+public slots:
+    void GeneratorDruzyny(int Liczba, int Typ);
 
 private slots:
     void on_actionGeneruj_Druzyny_triggered();

@@ -208,7 +208,7 @@ QToolButton:checked{
        <string notr="true">background-color: #FFFFFF</string>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="TabTeam">
        <attribute name="title">
@@ -232,6 +232,9 @@ QToolButton:checked{
           <property name="horizontalScrollMode">
            <enum>QAbstractItemView::ScrollPerPixel</enum>
           </property>
+          <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+           <bool>true</bool>
+          </attribute>
           <attribute name="horizontalHeaderStretchLastSection">
            <bool>true</bool>
           </attribute>
@@ -284,6 +287,9 @@ QToolButton:checked{
           <property name="editTriggers">
            <set>QAbstractItemView::NoEditTriggers</set>
           </property>
+          <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+           <bool>true</bool>
+          </attribute>
           <attribute name="horizontalHeaderStretchLastSection">
            <bool>true</bool>
           </attribute>
@@ -331,7 +337,7 @@ QToolButton:checked{
            <number>100</number>
           </attribute>
           <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-           <bool>false</bool>
+           <bool>true</bool>
           </attribute>
           <attribute name="horizontalHeaderStretchLastSection">
            <bool>true</bool>
@@ -417,6 +423,11 @@ QToolButton:checked{
             <string>Liczba Punktów</string>
            </property>
           </column>
+          <column>
+           <property name="text">
+            <string>Różnica</string>
+           </property>
+          </column>
          </widget>
         </item>
        </layout>
@@ -431,7 +442,7 @@ QToolButton:checked{
      <x>0</x>
      <y>0</y>
      <width>1244</width>
-     <height>26</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuXD">

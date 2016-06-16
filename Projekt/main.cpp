@@ -9,7 +9,6 @@ int main(int argc, char *argv[]) {
         w.AddTeam();
         w.AddRefree();
     }
-    // Blad w Ustawieniach meczy do poprawy
     int SP = w.NoweZawody.Druzyny.DruzynySiatkowkaPlazowa.size();
     int DO = w.NoweZawody.Druzyny.DruzynyDwaOgnie.size();
     int PL = w.NoweZawody.Druzyny.DruzynyPrzeciaganieLiny.size();

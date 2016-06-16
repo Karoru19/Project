@@ -9,6 +9,10 @@ MainWindow::MainWindow(QWidget *parent) :
     qsrand(QTime::currentTime().msecsSinceStartOfDay());
     ui->setupUi(this);
     gen = Generator();
+    GeneratorDruzynyDialog dialog;
+    connect(ui->TableTeam->horizontalHeader(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), ui->TableTeam, SLOT(sortByColumn(int)));
+    connect(ui->TableRefree->horizontalHeader(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), ui->TableRefree, SLOT(sortByColumn(int)));
+    connect(ui->TableMatch->horizontalHeader(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), ui->TableMatch, SLOT(sortByColumn(int)));
     connect(ui->TableRank->horizontalHeader(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), ui->TableRank, SLOT(sortByColumn(int)));
 }
 
@@ -244,6 +248,8 @@ void MainWindow::UpdateRank()
             Wynik = QString::number(pktza) + " : " + QString::number(pktprzeciw);
             ui->TableRank->setItem(i,2,new QTableWidgetItem(Wynik));
             ui->TableRank->setItem(i,3,new QTableWidgetItem(QString::number(NoweZawody.Druzyny.DruzynySiatkowkaPlazowa.value(DSP.at(i)).m_Punkty)));
+            Wynik = QString::number(pktza-pktprzeciw);
+            ui->TableRank->setItem(i, 4, new QTableWidgetItem(Wynik));
         }
         else if (i >=A && i < B){
             pktza = NoweZawody.Druzyny.DruzynyDwaOgnie.value(DDO.at(i - A)).m_PunktyZdobyte;
@@ -254,6 +260,8 @@ void MainWindow::UpdateRank()
             Wynik = QString::number(pktza) + " : " + QString::number(pktprzeciw);
             ui->TableRank->setItem(i,2,new QTableWidgetItem(Wynik));
             ui->TableRank->setItem(i,3,new QTableWidgetItem(QString::number(NoweZawody.Druzyny.DruzynyDwaOgnie.value(DDO.at(i - A)).m_Punkty)));
+            Wynik = QString::number(pktza-pktprzeciw);
+            ui->TableRank->setItem(i, 4, new QTableWidgetItem(Wynik));
         }
         else {
             pktza = NoweZawody.Druzyny.DruzynyPrzeciaganieLiny.value(DPL.at(i - B)).m_PunktyZdobyte;
@@ -264,6 +272,8 @@ void MainWindow::UpdateRank()
             Wynik = QString::number(pktza) + " : " + QString::number(pktprzeciw);
             ui->TableRank->setItem(i,2,new QTableWidgetItem(Wynik));
             ui->TableRank->setItem(i,3,new QTableWidgetItem(QString::number(NoweZawody.Druzyny.DruzynyPrzeciaganieLiny.value(DPL.at(i - B)).m_Punkty)));
+            Wynik = QString::number(pktza-pktprzeciw);
+            ui->TableRank->setItem(i, 4, new QTableWidgetItem(Wynik));
         }
     }
 }
@@ -303,4 +313,76 @@ void MainWindow::AddMatch()
 void MainWindow::AddScore()
 {
     NoweZawody.RozegrajMecze();
+}
+
+void MainWindow::GeneratorDruzyny(int Liczba, int Typ)
+{
+    if (Liczba == 0 || Typ == 0){
+        emit DruzynaDodana(false);
+    }
+    else if (Typ == 7){
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; j < Liczba; j++){
+                ui->TableTeam->insertRow(0);
+                ui->TableRank->insertRow(0);
+                NoweZawody.UstawDruzyne(gen.GenerujDruzyne(), i);
+            }
+        }
+        emit DruzynaDodana(true);
+    }
+    else if (Typ == 6){
+        for (int i = 0; i < 2; i++){
+            for (int j = 0; j < Liczba; j++){
+                ui->TableTeam->insertRow(0);
+                ui->TableRank->insertRow(0);
+                NoweZawody.UstawDruzyne(gen.GenerujDruzyne(), i);
+            }
+        }
+        emit DruzynaDodana(true);
+    }
+    else if (Typ == 5){
+        for (int j = 0; j < Liczba; j++){
+            ui->TableTeam->insertRow(0);
+            ui->TableRank->insertRow(0);
+            NoweZawody.UstawDruzyne(gen.GenerujDruzyne(), 0);
+            ui->TableTeam->insertRow(0);
+            ui->TableRank->insertRow(0);
+            NoweZawody.UstawDruzyne(gen.GenerujDruzyne(), 2);
+        }
+        emit DruzynaDodana(true);
+    }
+    else if (Typ == 4){
+        for (int j = 0; j < Liczba; j++){
+            ui->TableTeam->insertRow(0);
+            ui->TableRank->insertRow(0);
+            NoweZawody.UstawDruzyne(gen.GenerujDruzyne(), 0);
+        }
+        emit DruzynaDodana(true);
+    }
+    else if (Typ == 3){
+        for (int i = 1; i < 3; i++){
+            for (int j = 0; j < Liczba; j++){
+                ui->TableTeam->insertRow(0);
+                ui->TableRank->insertRow(0);
+                NoweZawody.UstawDruzyne(gen.GenerujDruzyne(), i);
+            }
+        }
+        emit DruzynaDodana(true);
+    }
+    else if (Typ == 2){
+        for (int j = 0; j < Liczba; j++){
+            ui->TableTeam->insertRow(0);
+            ui->TableRank->insertRow(0);
+            NoweZawody.UstawDruzyne(gen.GenerujDruzyne(), 1);
+        }
+        emit DruzynaDodana(true);
+    }
+    else if (Typ == 1){
+        for (int j = 0; j < Liczba; j++){
+            ui->TableTeam->insertRow(0);
+            ui->TableRank->insertRow(0);
+            NoweZawody.UstawDruzyne(gen.GenerujDruzyne(), 3);
+        }
+        emit DruzynaDodana(true);
+    }
 }

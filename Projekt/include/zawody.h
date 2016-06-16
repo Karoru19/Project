@@ -30,6 +30,8 @@ public:
 
     void UstawSpotkania();
     void RozegrajMecze();
+
+    void findsemifinalist();
 };
 
 #endif // ZAWODY_H

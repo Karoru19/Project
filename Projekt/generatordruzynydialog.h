@@ -2,6 +2,7 @@
 #define GENERATORDRUZYNYDIALOG_H
 
 #include <QDialog>
+#include <QMessageBox>
 
 namespace Ui {
 class GeneratorDruzynyDialog;
@@ -15,15 +16,19 @@ public:
     explicit GeneratorDruzynyDialog(QWidget *parent = 0);
     ~GeneratorDruzynyDialog();
     int m_Liczba;
+    int m_Typ;
+
+signals:
+    void GeneratorDruzyny(int Liczba, int Typ);
 
 public slots:
-    int WczytajLiczbe();
+    int WczytajLiczbe(int Liczba);
     int ObliczLiczbe();
+    void Sprawdz(bool dziala);
+    void OKButton (bool Odp);
 
 private slots:
     void on_pushButton_2_clicked();
-
-    void on_pushButton_clicked();
 
 private:
     Ui::GeneratorDruzynyDialog *ui;

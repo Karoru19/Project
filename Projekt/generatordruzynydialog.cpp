@@ -7,9 +7,11 @@ GeneratorDruzynyDialog::GeneratorDruzynyDialog(QWidget *parent) :
     ui(new Ui::GeneratorDruzynyDialog)
 {
     ui->setupUi(this);
-    qDebug() << m_Liczba;
-    //connect(ui->spinBox, SIGNAL, m_Liczba, SLOT(WczytajLiczbe()));
-    //connect(m_Liczba,SIGNAL,ui->label_3 , SLOT(setText(QString::number(ObliczLiczbe))));
+    connect(ui->spinBox, SIGNAL(valueChanged(int)),this, SLOT(WczytajLiczbe(int)));
+    connect(ui->checkBox, SIGNAL(stateChanged(int)), this, SLOT(ObliczLiczbe()));
+    connect(ui->checkBox_2, SIGNAL(stateChanged(int)), this, SLOT(ObliczLiczbe()));
+    connect(ui->checkBox_3, SIGNAL(stateChanged(int)), this, SLOT(ObliczLiczbe()));
+    connect(ui->pushButton, SIGNAL(clicked(bool)), this, SLOT(Sprawdz(bool)));
 }
 
 GeneratorDruzynyDialog::~GeneratorDruzynyDialog()
@@ -17,9 +19,11 @@ GeneratorDruzynyDialog::~GeneratorDruzynyDialog()
     delete ui;
 }
 
-int GeneratorDruzynyDialog::WczytajLiczbe()
+int GeneratorDruzynyDialog::WczytajLiczbe(int Liczba)
 {
-    return ui->spinBox->value();
+    m_Liczba = Liczba;
+    ObliczLiczbe();
+    return 0;
 }
 
 int GeneratorDruzynyDialog::ObliczLiczbe()
@@ -34,15 +38,33 @@ int GeneratorDruzynyDialog::ObliczLiczbe()
     if (ui->checkBox_3->isChecked()){
         ilosc += m_Liczba;
     }
-    return ilosc;
+    ui->label_3->setText(QString::number(ilosc));
+    return 0;
+}
+
+void GeneratorDruzynyDialog::Sprawdz(bool dziala)
+{
+    if (ui->checkBox->isChecked()){
+        m_Typ += 4;
+    }
+    if (ui->checkBox_2->isChecked()){
+        m_Typ += 2;
+    }
+    if (ui->checkBox_3->isChecked()){
+        m_Typ += 1;
+    }
+    emit GeneratorDruzyny(ui->spinBox->value(), m_Typ);
+}
+
+void GeneratorDruzynyDialog::OKButton(bool Odp)
+{
+    if (Odp){
+        accept();
+    }
+    else QMessageBox::warning(this, "UWAGA!", "Wybierz dyscypliny lub liczbe druzyny!");
 }
 
 void GeneratorDruzynyDialog::on_pushButton_2_clicked()
 {
     reject();
-}
-
-void GeneratorDruzynyDialog::on_pushButton_clicked()
-{
-
 }
