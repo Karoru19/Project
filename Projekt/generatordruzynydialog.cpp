@@ -11,7 +11,7 @@ GeneratorDruzynyDialog::GeneratorDruzynyDialog(QWidget *parent) :
     connect(ui->checkBox, SIGNAL(stateChanged(int)), this, SLOT(ObliczLiczbe()));
     connect(ui->checkBox_2, SIGNAL(stateChanged(int)), this, SLOT(ObliczLiczbe()));
     connect(ui->checkBox_3, SIGNAL(stateChanged(int)), this, SLOT(ObliczLiczbe()));
-    connect(ui->pushButton, SIGNAL(clicked(bool)), this, SLOT(Sprawdz(bool)));
+    connect(ui->pushButton, SIGNAL(clicked(bool)), this, SLOT(Sprawdz()));
 }
 
 GeneratorDruzynyDialog::~GeneratorDruzynyDialog()
@@ -42,7 +42,7 @@ int GeneratorDruzynyDialog::ObliczLiczbe()
     return 0;
 }
 
-void GeneratorDruzynyDialog::Sprawdz(bool dziala)
+void GeneratorDruzynyDialog::Sprawdz()
 {
     if (ui->checkBox->isChecked()){
         m_Typ += 4;
@@ -56,15 +56,15 @@ void GeneratorDruzynyDialog::Sprawdz(bool dziala)
     emit GeneratorDruzyny(ui->spinBox->value(), m_Typ);
 }
 
+void GeneratorDruzynyDialog::on_pushButton_2_clicked()
+{
+    reject();
+}
+
 void GeneratorDruzynyDialog::OKButton(bool Odp)
 {
     if (Odp){
         accept();
     }
     else QMessageBox::warning(this, "UWAGA!", "Wybierz dyscypliny lub liczbe druzyny!");
-}
-
-void GeneratorDruzynyDialog::on_pushButton_2_clicked()
-{
-    reject();
 }

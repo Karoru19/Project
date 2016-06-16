@@ -24,7 +24,7 @@ signals:
 public slots:
     int WczytajLiczbe(int Liczba);
     int ObliczLiczbe();
-    void Sprawdz(bool dziala);
+    void Sprawdz();
     void OKButton (bool Odp);
 
 private slots:

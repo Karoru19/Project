@@ -23,6 +23,8 @@ MainWindow::~MainWindow() {
 void MainWindow::on_actionGeneruj_Druzyny_triggered()
 {
     GeneratorDruzynyDialog dialog;
+    connect(&dialog, &GeneratorDruzynyDialog::GeneratorDruzyny, this, &MainWindow::GeneratorDruzyny);
+    connect(this, &MainWindow::DruzynaDodana, &dialog, &GeneratorDruzynyDialog::OKButton);
     dialog.exec();
 }
 
@@ -320,7 +322,7 @@ void MainWindow::GeneratorDruzyny(int Liczba, int Typ)
     if (Liczba == 0 || Typ == 0){
         emit DruzynaDodana(false);
     }
-    else if (Typ == 7){
+    if (Typ == 7){
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < Liczba; j++){
                 ui->TableTeam->insertRow(0);
@@ -330,7 +332,7 @@ void MainWindow::GeneratorDruzyny(int Liczba, int Typ)
         }
         emit DruzynaDodana(true);
     }
-    else if (Typ == 6){
+    if (Typ == 6){
         for (int i = 0; i < 2; i++){
             for (int j = 0; j < Liczba; j++){
                 ui->TableTeam->insertRow(0);
@@ -340,7 +342,7 @@ void MainWindow::GeneratorDruzyny(int Liczba, int Typ)
         }
         emit DruzynaDodana(true);
     }
-    else if (Typ == 5){
+    if (Typ == 5){
         for (int j = 0; j < Liczba; j++){
             ui->TableTeam->insertRow(0);
             ui->TableRank->insertRow(0);
@@ -351,15 +353,16 @@ void MainWindow::GeneratorDruzyny(int Liczba, int Typ)
         }
         emit DruzynaDodana(true);
     }
-    else if (Typ == 4){
+    if (Typ == 4){
         for (int j = 0; j < Liczba; j++){
             ui->TableTeam->insertRow(0);
             ui->TableRank->insertRow(0);
+            qDebug () << "Sito";
             NoweZawody.UstawDruzyne(gen.GenerujDruzyne(), 0);
         }
         emit DruzynaDodana(true);
     }
-    else if (Typ == 3){
+    if (Typ == 3){
         for (int i = 1; i < 3; i++){
             for (int j = 0; j < Liczba; j++){
                 ui->TableTeam->insertRow(0);
@@ -369,7 +372,7 @@ void MainWindow::GeneratorDruzyny(int Liczba, int Typ)
         }
         emit DruzynaDodana(true);
     }
-    else if (Typ == 2){
+    if (Typ == 2){
         for (int j = 0; j < Liczba; j++){
             ui->TableTeam->insertRow(0);
             ui->TableRank->insertRow(0);
@@ -377,7 +380,7 @@ void MainWindow::GeneratorDruzyny(int Liczba, int Typ)
         }
         emit DruzynaDodana(true);
     }
-    else if (Typ == 1){
+    if (Typ == 1){
         for (int j = 0; j < Liczba; j++){
             ui->TableTeam->insertRow(0);
             ui->TableRank->insertRow(0);
@@ -385,4 +388,6 @@ void MainWindow::GeneratorDruzyny(int Liczba, int Typ)
         }
         emit DruzynaDodana(true);
     }
+    UpdateTabTeam();
+    UpdateRank();
 }

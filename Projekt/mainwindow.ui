@@ -25,7 +25,8 @@ QMenuBar::item:selected{
 background-color: #f97c6a;
 }
 QMenuBar {
-background-color: #FFFFFF;
+background-color: #2D2D2D;
+color:  #FFFFFF;
 }</string>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -208,7 +209,7 @@ QToolButton:checked{
        <string notr="true">background-color: #FFFFFF</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="TabTeam">
        <attribute name="title">
@@ -319,7 +320,7 @@ QToolButton:checked{
       </widget>
       <widget class="QWidget" name="TabMatch">
        <attribute name="title">
-        <string>Mecze Eliminacyjne</string>
+        <string>Mecze</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
@@ -488,9 +489,16 @@ QToolButton:checked{
     <addaction name="actionGeneruj_Druzyny"/>
     <addaction name="actionGeneruj_Sedziego"/>
    </widget>
+   <widget class="QMenu" name="menuMecze">
+    <property name="title">
+     <string>Mecze</string>
+    </property>
+    <addaction name="actionRozegraj"/>
+   </widget>
    <addaction name="menuXD"/>
    <addaction name="menuEdycja"/>
    <addaction name="menuGenerator"/>
+   <addaction name="menuMecze"/>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
@@ -547,6 +555,11 @@ QToolButton:checked{
   <action name="actionGeneruj_Sedziego">
    <property name="text">
     <string>Generuj Sedziego</string>
+   </property>
+  </action>
+  <action name="actionRozegraj">
+   <property name="text">
+    <string>Rozegraj</string>
    </property>
   </action>
  </widget>
