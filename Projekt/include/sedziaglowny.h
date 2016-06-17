@@ -3,11 +3,14 @@
 
 #include "sedzia.h"
 
+/**
+ * @brief Klasa sędziego głównego
+ */
 class SedziaGlowny : public Sedzia {
 public:
-    SedziaGlowny();
-    SedziaGlowny(QString Imie, QString Nazwisko);
-    SedziaGlowny(const Osoba &O);
+    SedziaGlowny(); ///< Konstruktor domyślny.
+    SedziaGlowny(QString Imie, QString Nazwisko); ///< Konstruktor, ustawia imie i nazwisko.
+    SedziaGlowny(const Osoba &O); ///< Konwersja z osoby.
 };
 
 #endif // SEDZIAGLOWNY_H

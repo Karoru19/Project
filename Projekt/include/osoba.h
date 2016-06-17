@@ -3,20 +3,23 @@
 
 #include <QString>
 
+/**
+ * @brief Klasa osoby.
+ */
 class Osoba {
 public:
-    QString m_Imie;
-    QString m_Nazwisko;
+    QString m_Imie; ///< Imie
+    QString m_Nazwisko; ///< Nazwisko
 
-    Osoba();
-    Osoba(QString Imie, QString Nazwisko);
-    Osoba(const Osoba &O);
+    Osoba(); ///< Konstruktor domyślny.
+    Osoba(QString Imie, QString Nazwisko); ///< Konstruktor, ustawia imię i nazwisko.
+    Osoba(const Osoba &O); ///< Konstruktor kopiujący.
 
-    QString Imie() const;
-    QString Nazwisko() const;
+    QString Imie() const; ///< Zwraca imię.
+    QString Nazwisko() const; ///< Zwraca nazwisko.
 
-    void setImie(const QString &Imie);
-    void setNazwisko(const QString &Nazwisko);
+    void setImie(const QString &Imie); ///< Ustawia imie.
+    void setNazwisko(const QString &Nazwisko); ///< Ustawia nazwisko.
 };
 
 #endif // OSOBA_H

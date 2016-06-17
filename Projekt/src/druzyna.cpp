@@ -9,7 +9,7 @@ Druzyna::Druzyna() {
 
 }
 
-Druzyna::Druzyna(QString Nazwa, QList<Zawodnik> Zawodnicy, int Punkty) : m_Nazwa(Nazwa), m_Zawodnicy(Zawodnicy), m_Punkty(Punkty) {
+Druzyna::Druzyna(QString Nazwa, QList<Zawodnik> Zawodnicy) : m_Nazwa(Nazwa), m_Zawodnicy(Zawodnicy){
 
 }
 

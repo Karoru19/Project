@@ -20,14 +20,14 @@ private:
     QStringList m_NazwiskoZenskie;
     QStringList m_Przymiotnik;
     QStringList m_Rzeczownik;
-    QStringList m_NWM;
+    QStringList m_NWO;
 public:
-    Generator();
-    Osoba GenerujOsobe();
-    Zawodnik GenerujZawodnika(int a);
-    SedziaGlowny GenerujSedziegoGlownego();
-    SedziaPomocniczy GenerujSedziegoPomocniczego();
-    Druzyna GenerujDruzyne();
+    Generator(); ///< Konstruktor domyślny.
+    Osoba GenerujOsobe(); ///< Zwraca losową osobę.
+    Zawodnik GenerujZawodnika(int Numer); ///< Zwraca losowego zawodnika o podanym numerze.
+    SedziaGlowny GenerujSedziegoGlownego(); ///< Zwraca losowego sedziego głównego.
+    SedziaPomocniczy GenerujSedziegoPomocniczego(); ///< Zwraca losowego sędziego pomocniczego.
+    Druzyna GenerujDruzyne(); ///< Zwraca losową drużynę.
 };
 
 #endif // GENERATOR_H

@@ -3,11 +3,14 @@
 
 #include "osoba.h"
 
+/**
+ * @brief Klasa sędziego.
+ */
 class Sedzia : public Osoba {
 public:
-    Sedzia();
-    Sedzia(QString Imie, QString Nazwisko);
-    Sedzia(const Osoba &O);
+    Sedzia(); ///< Konstruktor domyślny.
+    Sedzia(QString Imie, QString Nazwisko); ///< Konstruktor.
+    Sedzia(const Osoba &O); ///< Konwersja z osoby.
 };
 
 #endif // SEDZIA_H
