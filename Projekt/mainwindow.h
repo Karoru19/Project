@@ -31,21 +31,23 @@ public:
     ~MainWindow();
 
     void UpdateTabTeam();
-    void UpdateTabRefree();
+    void UpdateTabReferee();
     void UpdateMatch();
     void UpdateRank();
 
-    void AddTeam();
-    void AddRefree();
     void AddMatch();
 
     void AddScore();
 
 signals:
     void DruzynaDodana(bool);
+    void SedziaDodany(bool);
 
 public slots:
     void GeneratorDruzyny(int Liczba, int Typ);
+    void GeneratorSedziego(int Liczba, int Typ);
+    void DodajDruzyne(QString Nazwa, QList<Zawodnik> Zawodnicy, int Typ);
+    void DodajSedziego(QString Imie, QString Nazwisko, int Typ);
 
 private slots:
     void on_actionGeneruj_Druzyny_triggered();
@@ -61,6 +63,10 @@ private slots:
     void on_actionDodaj_triggered();
 
     void on_actionO_nas_triggered();
+
+    void on_actionUstaw_Spotkania_triggered();
+
+    void on_actionRozegraj_triggered();
 
 private:
     Ui::MainWindow *ui;

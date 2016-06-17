@@ -11,7 +11,7 @@ GeneratorSedziegoDialog::GeneratorSedziegoDialog(QWidget *parent) :
     connect(ui->checkBox_2, SIGNAL(stateChanged(int)), this, SLOT(ObliczLiczbe()));
     connect(ui->checkBox_3, SIGNAL(stateChanged(int)), this, SLOT(ObliczLiczbe()));
     connect(ui->checkBox_4, SIGNAL(stateChanged(int)), this, SLOT(ObliczLiczbe()));
-    //connect(ui->pushButton, SIGNAL(clicked(bool)), this, SLOT(Sprawdz()));
+    connect(ui->pushButton, SIGNAL(clicked(bool)), this, SLOT(Sprawdz()));
 }
 
 GeneratorSedziegoDialog::~GeneratorSedziegoDialog()
@@ -31,6 +31,13 @@ int GeneratorSedziegoDialog::WczytajLiczbe(int Liczba)
     return 0;
 }
 
+void GeneratorSedziegoDialog::OKButton(bool Odp) {
+    if (Odp){
+        accept();
+    }
+    else QMessageBox::warning(this, "UWAGA!", "Wybierz liczbe lub typ sedziego i jego konkurencje!");
+}
+
 int GeneratorSedziegoDialog::ObliczLiczbe()
 {
     int ilosc = 0;
@@ -48,4 +55,20 @@ int GeneratorSedziegoDialog::ObliczLiczbe()
     }
     ui->label_3->setText(QString::number(ilosc));
     return 0;
+}
+
+void GeneratorSedziegoDialog::Sprawdz() {
+    if (ui->checkBox->isChecked()){
+        m_Typ += 0x01;
+    }
+    if (ui->checkBox_2->isChecked()){
+        m_Typ += 0x02;
+    }
+    if (ui->checkBox_3->isChecked()){
+        m_Typ += 0x04;
+    }
+    if (ui->checkBox_4->isChecked()) {
+        m_Typ += 0x08;
+    }
+    emit GeneratorSedziego(ui->spinBox->value(), m_Typ);
 }

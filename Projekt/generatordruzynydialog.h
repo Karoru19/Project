@@ -15,8 +15,8 @@ class GeneratorDruzynyDialog : public QDialog
 public:
     explicit GeneratorDruzynyDialog(QWidget *parent = 0);
     ~GeneratorDruzynyDialog();
-    int m_Liczba;
-    int m_Typ;
+    int m_Liczba = 0;
+    int m_Typ = 0;
 
 signals:
     void GeneratorDruzyny(int Liczba, int Typ);

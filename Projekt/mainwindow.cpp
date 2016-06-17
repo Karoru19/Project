@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     gen = Generator();
     GeneratorDruzynyDialog dialog;
     connect(ui->TableTeam->horizontalHeader(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), ui->TableTeam, SLOT(sortByColumn(int)));
-    connect(ui->TableRefree->horizontalHeader(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), ui->TableRefree, SLOT(sortByColumn(int)));
+    connect(ui->TableReferee->horizontalHeader(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), ui->TableReferee, SLOT(sortByColumn(int)));
     connect(ui->TableMatch->horizontalHeader(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), ui->TableMatch, SLOT(sortByColumn(int)));
     connect(ui->TableRank->horizontalHeader(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), ui->TableRank, SLOT(sortByColumn(int)));
 }
@@ -31,6 +31,8 @@ void MainWindow::on_actionGeneruj_Druzyny_triggered()
 void MainWindow::on_actionGeneruj_Sedziego_triggered()
 {
     GeneratorSedziegoDialog dialog;
+    connect(&dialog, &GeneratorSedziegoDialog::GeneratorSedziego, this, &MainWindow::GeneratorSedziego);
+    connect(this, &MainWindow::SedziaDodany, &dialog, &GeneratorSedziegoDialog::OKButton);
     dialog.exec();
 }
 
@@ -43,7 +45,10 @@ void MainWindow::on_actionUsun_2_triggered()
 
 void MainWindow::on_actionDodaj_2_triggered()
 {
+    QMessageBox::information(this, "UWAGA", "Zle wprowadzenie imienia i nazwiska spowoduje zakonczenie sie programu!");
     DodajSedziegoDialog dialog;
+    connect(&dialog, &DodajSedziegoDialog::DodajSedziego, this, &MainWindow::DodajSedziego);
+    connect(this, &MainWindow::SedziaDodany, &dialog, &DodajSedziegoDialog::OKButton);
     dialog.exec();
 }
 
@@ -55,7 +60,10 @@ void MainWindow::on_actionUsun_triggered()
 
 void MainWindow::on_actionDodaj_triggered()
 {
+    QMessageBox::information(this, "UWAGA", "Nie wprowadzenie zawodnikow spowoduje zakonczenie sie programu!");
     DodajDruzyneDialog dialog;
+    connect(&dialog, &DodajDruzyneDialog::DodajDruzyne, this, &MainWindow::DodajDruzyne);
+    connect(this, &MainWindow::DruzynaDodana, &dialog, &DodajDruzyneDialog::OKButton);
     dialog.exec();
 }
 
@@ -109,7 +117,7 @@ void MainWindow::UpdateTabTeam()
     }
 }
 
-void MainWindow::UpdateTabRefree()
+void MainWindow::UpdateTabReferee()
 {
     QList <QString> SGSP;
     QList <QString> SPSP;
@@ -128,30 +136,30 @@ void MainWindow::UpdateTabRefree()
     B = NoweZawody.Sedziowie.SedziowiePomocniczySiatkowkaPlazowa.size() + A;
     C = NoweZawody.Sedziowie.SedziowieDwaOgnie.size() + B;
 
-   for (int i = 0; i < ui->TableRefree->rowCount(); i++){
+   for (int i = 0; i < ui->TableReferee->rowCount(); i++){
         if (i < A){
-            ui->TableRefree->setItem(i,0,new QTableWidgetItem(NoweZawody.Sedziowie.SedziowieGlowniSiatkowkaPlazowa.value(SGSP.at(i)).m_Imie));
-            ui->TableRefree->setItem(i,1,new QTableWidgetItem(NoweZawody.Sedziowie.SedziowieGlowniSiatkowkaPlazowa.value(SGSP.at(i)).m_Nazwisko));
-            ui->TableRefree->setItem(i,2,new QTableWidgetItem("Sedzia Glowny"));
-            ui->TableRefree->setItem(i,3,new QTableWidgetItem("Siatkowka Plazowa"));
+            ui->TableReferee->setItem(i,0,new QTableWidgetItem(NoweZawody.Sedziowie.SedziowieGlowniSiatkowkaPlazowa.value(SGSP.at(i)).m_Imie));
+            ui->TableReferee->setItem(i,1,new QTableWidgetItem(NoweZawody.Sedziowie.SedziowieGlowniSiatkowkaPlazowa.value(SGSP.at(i)).m_Nazwisko));
+            ui->TableReferee->setItem(i,2,new QTableWidgetItem("Sedzia Glowny"));
+            ui->TableReferee->setItem(i,3,new QTableWidgetItem("Siatkowka Plazowa"));
         }
         else if (i >=A && i < B){
-            ui->TableRefree->setItem(i,0,new QTableWidgetItem(NoweZawody.Sedziowie.SedziowiePomocniczySiatkowkaPlazowa.value(SPSP.at(i-A)).m_Imie));
-            ui->TableRefree->setItem(i,1,new QTableWidgetItem(NoweZawody.Sedziowie.SedziowiePomocniczySiatkowkaPlazowa.value(SPSP.at(i-A)).m_Nazwisko));
-            ui->TableRefree->setItem(i,2,new QTableWidgetItem("Sedzia Pomocniczy"));
-            ui->TableRefree->setItem(i,3,new QTableWidgetItem("Siatkowka Plazowa"));
+            ui->TableReferee->setItem(i,0,new QTableWidgetItem(NoweZawody.Sedziowie.SedziowiePomocniczySiatkowkaPlazowa.value(SPSP.at(i-A)).m_Imie));
+            ui->TableReferee->setItem(i,1,new QTableWidgetItem(NoweZawody.Sedziowie.SedziowiePomocniczySiatkowkaPlazowa.value(SPSP.at(i-A)).m_Nazwisko));
+            ui->TableReferee->setItem(i,2,new QTableWidgetItem("Sedzia Pomocniczy"));
+            ui->TableReferee->setItem(i,3,new QTableWidgetItem("Siatkowka Plazowa"));
         }
         else if (i >=B && i < C){
-            ui->TableRefree->setItem(i,0,new QTableWidgetItem(NoweZawody.Sedziowie.SedziowieDwaOgnie.value(SGDO.at(i-B)).m_Imie));
-            ui->TableRefree->setItem(i,1,new QTableWidgetItem(NoweZawody.Sedziowie.SedziowieDwaOgnie.value(SGDO.at(i-B)).m_Nazwisko));
-            ui->TableRefree->setItem(i,2,new QTableWidgetItem("Sedzia"));
-            ui->TableRefree->setItem(i,3,new QTableWidgetItem("Dwa Ognie"));
+            ui->TableReferee->setItem(i,0,new QTableWidgetItem(NoweZawody.Sedziowie.SedziowieDwaOgnie.value(SGDO.at(i-B)).m_Imie));
+            ui->TableReferee->setItem(i,1,new QTableWidgetItem(NoweZawody.Sedziowie.SedziowieDwaOgnie.value(SGDO.at(i-B)).m_Nazwisko));
+            ui->TableReferee->setItem(i,2,new QTableWidgetItem("Sedzia"));
+            ui->TableReferee->setItem(i,3,new QTableWidgetItem("Dwa Ognie"));
         }
         else {
-            ui->TableRefree->setItem(i,0,new QTableWidgetItem(NoweZawody.Sedziowie.SedziowiePrzeciaganieLiny.value(SGPL.at(i-C)).m_Imie));
-            ui->TableRefree->setItem(i,1,new QTableWidgetItem(NoweZawody.Sedziowie.SedziowiePrzeciaganieLiny.value(SGPL.at(i-C)).m_Nazwisko));
-            ui->TableRefree->setItem(i,2,new QTableWidgetItem("Sedzia"));
-            ui->TableRefree->setItem(i,3,new QTableWidgetItem("Przeciaganie Liny"));
+            ui->TableReferee->setItem(i,0,new QTableWidgetItem(NoweZawody.Sedziowie.SedziowiePrzeciaganieLiny.value(SGPL.at(i-C)).m_Imie));
+            ui->TableReferee->setItem(i,1,new QTableWidgetItem(NoweZawody.Sedziowie.SedziowiePrzeciaganieLiny.value(SGPL.at(i-C)).m_Nazwisko));
+            ui->TableReferee->setItem(i,2,new QTableWidgetItem("Sedzia"));
+            ui->TableReferee->setItem(i,3,new QTableWidgetItem("Przeciaganie Liny"));
         }
    }
 }
@@ -280,30 +288,68 @@ void MainWindow::UpdateRank()
     }
 }
 
-void MainWindow::AddTeam()
+void MainWindow::DodajDruzyne(QString Nazwa, QList <Zawodnik> Zawodnicy, int Typ)
 {
-    ui->TableTeam->insertRow(0);
-    ui->TableRank->insertRow(0);
-    int a = qrand()%3;
-    NoweZawody.UstawDruzyne(gen.GenerujDruzyne(),a);
+    if (NoweZawody.Druzyny.DruzynySiatkowkaPlazowa.keys().count(Nazwa) > 0 || NoweZawody.Druzyny.DruzynyDwaOgnie.keys().count(Nazwa) > 0 || NoweZawody.Druzyny.DruzynyPrzeciaganieLiny.keys().count(Nazwa) > 0){
+        QMessageBox::warning(this, "UWAGA", "Juz istnieje druzyna o takiej nazwie!");
+        return;
+    }
+    if (Nazwa == NULL || Zawodnicy.count() < 5){
+        QMessageBox::warning(this, "UWAGA", "Wpisz nazwe lub zawodnikow");
+        return;
+    }
+    if (Typ & 0x01){
+        ui->TableTeam->insertRow(0);
+        ui->TableRank->insertRow(0);
+        NoweZawody.UstawDruzyne(Druzyna(Nazwa, Zawodnicy), 0);
+        emit DruzynaDodana(true);
+    }
+    if (Typ & 0x02){
+        ui->TableTeam->insertRow(0);
+        ui->TableRank->insertRow(0);
+        NoweZawody.UstawDruzyne(Druzyna(Nazwa, Zawodnicy), 1);
+        emit DruzynaDodana(true);
+    }
+    if (Typ & 0x04){
+        ui->TableTeam->insertRow(0);
+        ui->TableRank->insertRow(0);
+        NoweZawody.UstawDruzyne(Druzyna(Nazwa, Zawodnicy), 2);
+        emit DruzynaDodana(true);
+    }
+    UpdateTabTeam();
 }
 
-void MainWindow::AddRefree()
+void MainWindow::DodajSedziego(QString Imie, QString Nazwisko, int Typ)
 {
-    ui->TableRefree->insertRow(0);
-    int a = qrand()%4;
-    if (a == 0){
-        NoweZawody.UstawSedziego(gen.GenerujSedziegoGlownego(), a);
+    if (NoweZawody.Sedziowie.SedziowieGlowniSiatkowkaPlazowa.keys().count(Imie + " " + Nazwisko) > 0 || NoweZawody.Sedziowie.SedziowiePomocniczySiatkowkaPlazowa.keys().count(Imie + " " + Nazwisko) > 0 || NoweZawody.Sedziowie.SedziowieDwaOgnie.keys().count(Imie + " " + Nazwisko) > 0 || NoweZawody.Sedziowie.SedziowiePrzeciaganieLiny.keys().count(Imie + " " + Nazwisko) > 0){
+        QMessageBox::warning(this, "UWAGA", "Juz istnieje druzyna o takiej nazwie!");
+        return;
     }
-    else if (a == 1){
-        NoweZawody.UstawSedziego(gen.GenerujSedziegoGlownego(), a);
+    if (Imie == NULL || Imie == NULL){
+        QMessageBox::warning(this, "UWAGA", "Wprowadz Sedziego");
+        emit DruzynaDodana(false);
     }
-    else if (a == 2){
-        NoweZawody.UstawSedziego(gen.GenerujSedziegoGlownego(), a);
+    if (Typ & 0x01){
+        ui->TableReferee->insertRow(0);
+        NoweZawody.UstawSedziego(SedziaGlowny(Imie, Nazwisko), 0);
+        emit SedziaDodany(true);
     }
-    else{
-        NoweZawody.UstawSedziego(gen.GenerujSedziegoPomocniczego(), 0, true);
+    if (Typ & 0x02){
+        ui->TableReferee->insertRow(0);
+        NoweZawody.UstawSedziego(SedziaPomocniczy(Imie, Nazwisko), 0, true);
+        emit SedziaDodany(true);
     }
+    if (Typ & 0x04){
+        ui->TableReferee->insertRow(0);
+        NoweZawody.UstawSedziego(SedziaGlowny(Imie, Nazwisko), 1);
+        emit SedziaDodany(true);
+    }
+    if (Typ & 0x08){
+        ui->TableReferee->insertRow(0);
+        NoweZawody.UstawSedziego(SedziaGlowny(Imie, Nazwisko), 2);
+        emit SedziaDodany(true);
+    }
+    UpdateTabReferee();
 }
 
 void MainWindow::AddMatch()
@@ -322,72 +368,97 @@ void MainWindow::GeneratorDruzyny(int Liczba, int Typ)
     if (Liczba == 0 || Typ == 0){
         emit DruzynaDodana(false);
     }
-    if (Typ == 7){
-        for (int i = 0; i < 3; i++){
-            for (int j = 0; j < Liczba; j++){
-                ui->TableTeam->insertRow(0);
-                ui->TableRank->insertRow(0);
-                NoweZawody.UstawDruzyne(gen.GenerujDruzyne(), i);
-            }
-        }
-        emit DruzynaDodana(true);
-    }
-    if (Typ == 6){
-        for (int i = 0; i < 2; i++){
-            for (int j = 0; j < Liczba; j++){
-                ui->TableTeam->insertRow(0);
-                ui->TableRank->insertRow(0);
-                NoweZawody.UstawDruzyne(gen.GenerujDruzyne(), i);
-            }
-        }
-        emit DruzynaDodana(true);
-    }
-    if (Typ == 5){
-        for (int j = 0; j < Liczba; j++){
+    if (Typ & 0x01){
+        for (int i = 0; i < Liczba; i++){
             ui->TableTeam->insertRow(0);
             ui->TableRank->insertRow(0);
-            NoweZawody.UstawDruzyne(gen.GenerujDruzyne(), 0);
-            ui->TableTeam->insertRow(0);
-            ui->TableRank->insertRow(0);
-            NoweZawody.UstawDruzyne(gen.GenerujDruzyne(), 2);
+            NoweZawody.UstawDruzyne(gen.GenerujDruzyne(),0);
         }
         emit DruzynaDodana(true);
     }
-    if (Typ == 4){
-        for (int j = 0; j < Liczba; j++){
+    if (Typ & 0x02){
+        for (int i = 0; i < Liczba; i++){
             ui->TableTeam->insertRow(0);
             ui->TableRank->insertRow(0);
-            qDebug () << "Sito";
-            NoweZawody.UstawDruzyne(gen.GenerujDruzyne(), 0);
+            NoweZawody.UstawDruzyne(gen.GenerujDruzyne(),1);
         }
         emit DruzynaDodana(true);
     }
-    if (Typ == 3){
-        for (int i = 1; i < 3; i++){
-            for (int j = 0; j < Liczba; j++){
-                ui->TableTeam->insertRow(0);
-                ui->TableRank->insertRow(0);
-                NoweZawody.UstawDruzyne(gen.GenerujDruzyne(), i);
-            }
-        }
-        emit DruzynaDodana(true);
-    }
-    if (Typ == 2){
-        for (int j = 0; j < Liczba; j++){
+    if (Typ & 0x04){
+        for (int i = 0; i < Liczba; i++){
             ui->TableTeam->insertRow(0);
             ui->TableRank->insertRow(0);
-            NoweZawody.UstawDruzyne(gen.GenerujDruzyne(), 1);
-        }
-        emit DruzynaDodana(true);
-    }
-    if (Typ == 1){
-        for (int j = 0; j < Liczba; j++){
-            ui->TableTeam->insertRow(0);
-            ui->TableRank->insertRow(0);
-            NoweZawody.UstawDruzyne(gen.GenerujDruzyne(), 3);
+            NoweZawody.UstawDruzyne(gen.GenerujDruzyne(),2);
         }
         emit DruzynaDodana(true);
     }
     UpdateTabTeam();
     UpdateRank();
+}
+
+void MainWindow::GeneratorSedziego(int Liczba, int Typ)
+{
+    if (Liczba == 0 || Typ == 0){
+        emit SedziaDodany(false);
+    }
+    if (Typ & 0x01){
+        for (int i = 0; i < Liczba; i++){
+            ui->TableReferee->insertRow(0);
+            NoweZawody.UstawSedziego(gen.GenerujSedziegoGlownego(),0);
+        }
+        emit SedziaDodany(true);
+    }
+    if (Typ & 0x02){
+        for (int i = 0; i < Liczba; i++){
+            ui->TableReferee->insertRow(0);
+            NoweZawody.UstawSedziego(gen.GenerujSedziegoPomocniczego(), 0, true);
+        }
+        emit SedziaDodany(true);
+    }
+    if (Typ & 0x04){
+        for (int i = 0; i < Liczba; i++){
+            ui->TableReferee->insertRow(0);
+            NoweZawody.UstawSedziego(gen.GenerujSedziegoGlownego(),1);
+        }
+        emit SedziaDodany(true);
+    }
+    if (Typ & 0x08){
+        for (int i = 0; i < Liczba; i++){
+            ui->TableReferee->insertRow(0);
+            NoweZawody.UstawSedziego(gen.GenerujSedziegoGlownego(),2);
+        }
+        emit SedziaDodany(true);
+    }
+    UpdateTabReferee();
+}
+
+void MainWindow::on_actionUstaw_Spotkania_triggered()
+{
+    if ((NoweZawody.Druzyny.DruzynySiatkowkaPlazowa.size() > 0 && NoweZawody.Sedziowie.SedziowieGlowniSiatkowkaPlazowa.size() > 0 && NoweZawody.Sedziowie.SedziowiePomocniczySiatkowkaPlazowa.size() > 0) ||
+            (NoweZawody.Druzyny.DruzynyDwaOgnie.size() > 0 && NoweZawody.Sedziowie.SedziowieDwaOgnie.size() > 0) ||
+            (NoweZawody.Druzyny.DruzynyPrzeciaganieLiny.size() > 0 && NoweZawody.Sedziowie.SedziowiePrzeciaganieLiny.size() > 0)){
+
+        int a, b, c, ilosc;
+        a = NoweZawody.Druzyny.DruzynySiatkowkaPlazowa.size();
+        b = NoweZawody.Druzyny.DruzynyDwaOgnie.size();
+        c = NoweZawody.Druzyny.DruzynyPrzeciaganieLiny.size();
+        ilosc = (a*(a-1)+b*(b-1)+c*(c-1))/2;
+        for (int i = 0; i < ilosc; i++){
+            AddMatch();
+        }
+        UpdateMatch();
+    }
+    else{
+        QMessageBox::warning(this,"UWAGA", "Dodaj Druzyne lub Sedziego Glownego lub Sedziego Pomocniczego!");
+    }
+}
+
+void MainWindow::on_actionRozegraj_triggered()
+{
+    if (NoweZawody.Spotkania.MeczeSiatkowekPlazowych.size() > 0 || NoweZawody.Spotkania.MeczeDwochOgni.size() > 0 || NoweZawody.Spotkania.MeczePrzeciaganieLiny.size() > 0){
+        AddScore();
+    }
+    else {
+        QMessageBox::warning(this,"UWAGA", "Nie ma zadnych meczy!");
+    }
 }

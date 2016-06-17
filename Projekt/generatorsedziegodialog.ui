@@ -52,21 +52,21 @@
     </widget>
    </item>
    <item>
-    <widget class="QCheckBox" name="checkBox_3">
+    <widget class="QCheckBox" name="checkBox_2">
      <property name="text">
       <string>Sedzia Pomocniczy Siatkowka Plazowa</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QCheckBox" name="checkBox_4">
+    <widget class="QCheckBox" name="checkBox_3">
      <property name="text">
       <string>Sedzia Dwa Ognie</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QCheckBox" name="checkBox_2">
+    <widget class="QCheckBox" name="checkBox_4">
      <property name="text">
       <string>Sedzia Przeciaganie Liny</string>
      </property>

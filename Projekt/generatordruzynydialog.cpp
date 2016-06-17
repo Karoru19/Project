@@ -45,13 +45,13 @@ int GeneratorDruzynyDialog::ObliczLiczbe()
 void GeneratorDruzynyDialog::Sprawdz()
 {
     if (ui->checkBox->isChecked()){
-        m_Typ += 4;
+        m_Typ += 0x01;
     }
     if (ui->checkBox_2->isChecked()){
-        m_Typ += 2;
+        m_Typ += 0x02;
     }
     if (ui->checkBox_3->isChecked()){
-        m_Typ += 1;
+        m_Typ += 0x04;
     }
     emit GeneratorDruzyny(ui->spinBox->value(), m_Typ);
 }

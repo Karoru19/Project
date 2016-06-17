@@ -278,13 +278,13 @@ QToolButton:checked{
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="TabRefree">
+      <widget class="QWidget" name="TabReferee">
        <attribute name="title">
         <string>Sędziowie</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_4">
         <item>
-         <widget class="QTableWidget" name="TableRefree">
+         <widget class="QTableWidget" name="TableReferee">
           <property name="editTriggers">
            <set>QAbstractItemView::NoEditTriggers</set>
           </property>
@@ -463,7 +463,6 @@ QToolButton:checked{
      </property>
      <addaction name="actionDodaj"/>
      <addaction name="actionUsun"/>
-     <addaction name="actionEdytuj"/>
     </widget>
     <widget class="QMenu" name="menuSedziowie">
      <property name="title">
@@ -471,7 +470,6 @@ QToolButton:checked{
      </property>
      <addaction name="actionDodaj_2"/>
      <addaction name="actionUsun_2"/>
-     <addaction name="actionEdytuj_2"/>
     </widget>
     <addaction name="menuDruzyny"/>
     <addaction name="menuSedziowie"/>
@@ -493,6 +491,7 @@ QToolButton:checked{
     <property name="title">
      <string>Mecze</string>
     </property>
+    <addaction name="actionUstaw_Spotkania"/>
     <addaction name="actionRozegraj"/>
    </widget>
    <addaction name="menuXD"/>
@@ -560,6 +559,11 @@ QToolButton:checked{
   <action name="actionRozegraj">
    <property name="text">
     <string>Rozegraj</string>
+   </property>
+  </action>
+  <action name="actionUstaw_Spotkania">
+   <property name="text">
+    <string>Ustaw Spotkania</string>
    </property>
   </action>
  </widget>
