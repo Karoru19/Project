@@ -61,7 +61,7 @@ Generator::Generator() {
     plik->open(QIODevice::ReadOnly);
     in = new QTextStream(plik);
     while(!in->atEnd()){
-        m_NWM.append(in->readLine());
+        m_NWO.append(in->readLine());
     }
     delete in;
     plik->close();
@@ -93,9 +93,9 @@ Osoba Generator::GenerujOsobe()
     return Osoba(Imie, Nazwisko);
 }
 
-Zawodnik Generator::GenerujZawodnika(int a) {
+Zawodnik Generator::GenerujZawodnika(int Numer) {
     Osoba pom = GenerujOsobe();
-    return Zawodnik(pom.Imie(), pom.Nazwisko(), a);
+    return Zawodnik(pom.Imie(), pom.Nazwisko(), Numer);
 }
 
 SedziaGlowny Generator::GenerujSedziegoGlownego() {
@@ -121,11 +121,11 @@ Druzyna Generator::GenerujDruzyne() {
 
     x = qrand()%m_Przymiotnik.size();
     y = qrand()%m_Rzeczownik.size();
-    z = qrand()%m_NWM.size();
+    z = qrand()%m_NWO.size();
 
     Przymiotnik = m_Przymiotnik.at(x);
     Rzeczownik = m_Rzeczownik.at(y);
-    NWM = m_NWM.at(z);
+    NWM = m_NWO.at(z);
 
     if (Rzeczownik.at(Rzeczownik.length()-1) == 'a'){
         NazwaDruzyny = Przymiotnik + "a " + Rzeczownik + " " + NWM;

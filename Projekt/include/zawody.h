@@ -1,37 +1,30 @@
 #ifndef ZAWODY_H
 #define ZAWODY_H
 
-#include <cstdlib>
 #include "listadruzyn.h"
 #include "listasedziow.h"
 #include "listaspotkan.h"
 #include <QDebug>
 
+/**
+ * @brief Klasa zawodów.
+ */
 class Zawody
 {
 public:
-    ListaSpotkan Spotkania;
-    ListaSedziow Sedziowie;
-    ListaDruzyn Druzyny;
+    ListaSpotkan Spotkania; ///< Spotkania
+    ListaSedziow Sedziowie; ///< Sedziowie
+    ListaDruzyn Druzyny; ///< Drużyny
 
-    int Zwyciezcy = 4;
-    bool Koniec = false;
+    Zawody(); ///< Konstruktor.
 
-    QMap <QString, Druzyna> ListaZwyciezcowSiatkowkaPlazowa;
-    QMap <QString, Druzyna> ListaZwyciezcowDwaOgnie;
-    QMap <QString, Druzyna> ListaZwyciezcowPrzeciaganieLiny;
+    bool UstawDruzyne (Druzyna NowaDruzyna, int Konkurencja); ///< Dodaje drużynę do zawodów.
+    bool UsunDruzyne (QString Nazwa); ///< Usuwa drużynę z zawodów.
+    bool UstawSedziego (Sedzia NowySedzia, int Konkurencja, bool Pomocniczy = false); ///< Dodaje sędziego do zawodów.
+    bool UsunSedziego (QString Imie, QString Nazwisko); ///< Usuwa sedziego z zawodów.
 
-    Zawody();
-
-    bool UstawDruzyne (Druzyna NowaDruzyna, int Konkurencja);
-    bool UsunDruzyne (QString Nazwa);
-    bool UstawSedziego (Sedzia NowySedzia, int Konkurencja, bool Pomocniczy = false);
-    bool UsunSedziego (QString Imie, QString Nazwisko);
-
-    void UstawSpotkania();
-    void RozegrajMecze();
-
-    void findsemifinalist();
+    void UstawSpotkania(); ///< Planuje spotkania.
+    void RozegrajMecze(); ///< Losuje wyniki meczy.
 };
 
 #endif // ZAWODY_H

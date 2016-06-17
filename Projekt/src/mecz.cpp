@@ -5,7 +5,7 @@ Mecz::Mecz()
 
 }
 
-Mecz::Mecz(SedziaGlowny Sedzia, int PunktyGospodarza, int PunktyGoscia) : m_PunktyGospodarza(PunktyGospodarza), m_PunktyGoscia(PunktyGoscia) , m_Sedzia(Sedzia) {
+Mecz::Mecz(SedziaGlowny Sedzia) : m_Sedzia(Sedzia) {
 
 }
 

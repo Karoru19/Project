@@ -3,10 +3,20 @@
 
 #include "meczdruzynowy.h"
 
+/**
+ * @brief Klasa meczu w piłkę.
+ */
 class Pilka : public MeczDruzynowy
 {
 public:
-    Pilka();
+    Pilka(); ///< Konstruktor domyślny.
+
+    /**
+     * @brief Konstruktor
+     * @param Gospodarz Drużyna gospodarza.
+     * @param Gosc Drużyna gościa.
+     * @param Sedzia Sędzia główny.
+     */
     Pilka(Druzyna Gospodarz, Druzyna Gosc, SedziaGlowny Sedzia);
 };
 

@@ -3,12 +3,15 @@
 
 #include "sedzia.h"
 
+/**
+ * @brief Klasa sędziego pomocniczego.
+ */
 class SedziaPomocniczy : public Sedzia
 {
 public:
-    SedziaPomocniczy();
-    SedziaPomocniczy(QString Imie, QString Nazwisko);
-    SedziaPomocniczy(const Osoba &O);
+    SedziaPomocniczy(); ///< Konstruktor domyślny.
+    SedziaPomocniczy(QString Imie, QString Nazwisko); ///< Konstruktor, ustawia imie i nazwisko.
+    SedziaPomocniczy(const Osoba &O); ///< Konwersja z osoby.
 };
 
 #endif // SEDZIAPOMOCNICZY_H
